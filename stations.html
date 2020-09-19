@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Stations{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block body %}
+<h1 style="text-align:center;">Welcome To Climate Analysis </h1>
+<h2 style="text-align:center">Distinct Stations</h2>
+<div class="table" style="width:500px;height:500px; margin: auto;">
+<table style=" background-repeat:no-repeat; width:450px;margin:0;overflow-y:scroll;" cellpadding="1" cellspacing="1" border="1">
+  <tr style="height:40px; width:450px; margin:0;">
+    <th style="height:40px; width:40px; margin:0;">station</th>
+  </tr>
+  {% for station in stations%}
+      <tr style="height:40px; width:450px; margin:0;">
+        <td style="height:40px; width:40px; margin:0;">{{station['name']}}</td>
+      </tr>
+  {% endfor %}
+</table>
+</div>
+<br>
+<form action="/homepage/api/v1.0/stations" method="POST">
+    <input type="submit" value="Back" style="margin-left: 900px;">
+</form>
+{% endblock %}

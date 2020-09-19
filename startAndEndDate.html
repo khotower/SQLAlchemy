@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Tobs{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block body %}
+<h1 style="text-align:center;">Welcome To Climate Analysis </h1>
+<h2 style="text-align:center">Mean, Max and Avg Temperature Between Dates {{Start_date}} & {{End_date}} </h2>
+<div class="table" style="width:500px;height:200px; margin: auto;">
+<table style=" background-repeat:no-repeat; width:450px;margin:0;overflow-y:scroll;" cellpadding="1" cellspacing="1" border="1">
+  <tr style="height:40px; width:450px; margin:0;">
+    <th style="height:40px; width:40px; margin:0;">statistics summary</th>
+    <th style="height:40px; width:40px; margin:0;">Values</th>
+  </tr>
+  {% for key,value in calc_temps.items()%}
+      <tr style="height:40px; width:450px; margin:0;">
+        <td style="height:40px; width:40px; margin:0;">{{key}}</td>
+        <td style="height:40px; width:40px; margin:0;">{{value}}</td>
+      </tr>
+  {% endfor %}
+</table>
+</div>
+<h2 style="text-align:center">Mean, Max and Avg Temperature From Date {{Single_Start_date}}</h2>
+<div class="table" style="width:500px;height:200px; margin: auto;">
+<table style=" background-repeat:no-repeat; width:450px;margin:0;overflow-y:scroll;" cellpadding="1" cellspacing="1" border="1">
+  <tr style="height:40px; width:450px; margin:0;">
+    <th style="height:40px; width:40px; margin:0;">statistics summary</th>
+    <th style="height:40px; width:40px; margin:0;">Values</th>
+  </tr>
+  {% for key,value in Single_date_calcul.items()%}
+      <tr style="height:40px; width:450px; margin:0;">
+        <td style="height:40px; width:40px; margin:0;">{{key}}</td>
+        <td style="height:40px; width:40px; margin:0;">{{value}}</td>
+      </tr>
+  {% endfor %}
+</table>
+</div>
+<br>
+<form action="/homepage/api/v1.0/" method="POST">
+    <input type="submit" value="Back" style="margin-left: 900px;">
+</form>
+{% endblock %}

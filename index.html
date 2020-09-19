@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block body %}
+<h1 style="text-align:center;">Welcome To Climate Analysis </h1>
+
+<div class="table" style="width:1200px;height:500px; margin: auto;">
+    <br><br><br>
+    <h2>List of all available routes</h2>
+    <h4><b>*</b>  <a href="/homepage/api/v1.0/precipitation">/api/v1.0/precipitation</a></h4>
+
+    <h4><b>*</b>  <a href="/homepage/api/v1.0/stations">/api/v1.0/stations</a></h4>
+
+    <h4><b>*</b>  <a href="/homepage/api/v1.0/tobs">/api/v1.0/tobs</a></h4>
+
+    <h4><b>*</b> <a href="/homepage/api/v1.0/">/api/v1.0/</a></h4>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Precipitation{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block body %}
+<h1 style="text-align:center;">Welcome To Climate Analysis </h1>
+<h2 style="text-align:center">One Year Of Precipitations</h2>
+<div class="table" style="width:500px;height:500px; margin: auto;overflow-y:scroll;">
+<table style=" background-repeat:no-repeat; width:450px;margin:0;" cellpadding="1" cellspacing="1" border="1">
+  <tr style="height:40px; width:450px; margin:0;">
+    <th style="height:40px; width:40px; margin:0;">Date</th>
+    <th style="height:40px; width:40px; margin:0;">Precipitation</th>
+  </tr>
+  {% for date, ppct in result.items()%}
+
+      <tr style="height:40px; width:450px; margin:0;">
+        <td style="height:40px; width:40px; margin:0;">{{date}}</td>
+        <td style="height:40px; width:40px; margin:0;">{{ppct}}</td>
+      </tr>
+  {% endfor %}
+</table>
+</div>
+<br>
+<form action="/homepage/api/v1.0/precipitation" method="POST">
+    <input type="submit" value="Back" style="margin-left: 900px;">
+</form>
+{% endblock %}
